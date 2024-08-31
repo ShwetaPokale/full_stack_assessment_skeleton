@@ -129,7 +129,7 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
->   - Create the user Table: 
+   - Create the user Table: 
     1. Captures unique information about each user, including their name and email, to ensure a clear identity.
     2. Store user information with a primary key on username.
   - Create the home Table:
@@ -147,8 +147,8 @@ docker-compose -f docker-compose.initial.yml up --build -d
       ![Alt Text](images/user.png)
     2. Home table
       ![Alt Text](images/home.png)
-    3. user_home_details table
-      [Alt Text](images/user_home_details.png)
+    3. User and home details table
+      ![Alt Text](images/user_home_details.png)
 
 ## 2. React SPA
 
