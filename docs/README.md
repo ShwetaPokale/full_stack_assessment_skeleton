@@ -25,13 +25,27 @@
   - however you can use simple libraries that are not mentioned, granted they don't significantly alter the task or do the work for you and that you document the decision-making properly as explained below
 
 - **solution** :
-  - once you're done solving the exercise or a part of it, you **MUST** document your solution in this section under the appropriate part of the exercise you solved, so the for the database problem you should edit the solution section under [database](#1-database) only
+  - Create the user Table: 
+    1. Captures unique information about each user, including their name and email, to ensure a clear identity.
+    2. Store user information with a primary key on username.
+  - Create the home Table:
+    1. Holds essential details about each home such as address, state, ZIP code, size, bedrooms, bathrooms, and price.
+    2. Store home information with a primary key on street_address.
+  - Create the user_home Table:
+    1. Establish a many-to-many relationship between users and homes with a composite primary key and foreign keys.
+    2. Acts as a bridge between users and homes, efficiently tracking user interests without duplicating data entries.
+  - Benefits of This Structure:
+    1. Stores data once, saving space and maintaining consistency.
+    2. Keeps data consistent and valid with foreign keys and centralized updates.
+    3. Easier to update, delete, and scale data without affecting multiple records.
+  - Screenshot:
+    1. User table
+      ![Alt Text](docs/images/home.user.png)
+    2. Home table
+      ![Alt Text](docs/images/home.home.png)
+    3. user_home_details table
+      [Alt Text](docs/images/home.user_home_details.png)
 
-  - the idea is to document mainly 2 things:
-
-    - key problem solving points: that provide a high level overview of how you solved that problem
-      - eg: for the DB problem, what tables you created / altered, how does that accomplish the tasks (if it's not obvious)
-    - instructions: you must include all instructions (including code) that will allow us to run and review your solution
 
 ## 0. Setup
 
