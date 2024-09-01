@@ -1,5 +1,5 @@
 import React from 'react';
-import HomesForUser from '../src/features/HomesForUser'; 
+import HomesForUser from '../src/components/HomesForUser'; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 

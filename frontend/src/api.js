@@ -1,43 +1,43 @@
-import axios from 'axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const API_BASE_URL = 'http://localhost:3000';
 
-export const fetchHomesForUser = async (username, page = 1) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/home/find-by-user`, null, {
-      params: { username, page }
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error fetching homes for user');
-  }
-};
+export const api = createApi({
+  reducerPath: 'api',
+  baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
+  endpoints: (builder) => ({
+    fetchHomesForUser: builder.query({
+      query: ({ username, page = 1 }) => ({
+        url: '/home/find-by-user',
+        method: 'POST',
+        params: { username, page },
+      }),
+    }),
+    updateUsersForHome: builder.mutation({
+      query: ({ streetAddress, users }) => ({
+        url: '/home/update-users',
+        method: 'POST',
+        body: { streetAddress, users },
+      }),
+    }),
+    fetchAllUsers: builder.query({
+      query: () => '/user/find-all',
+    }),
+    fetchUsersForHome: builder.query({
+      query: (streetAddress) => ({
+        url: '/user/find-by-home',
+        method: 'POST',
+        params: { street_address: streetAddress },
+      }),
+    }),
+  }),
+});
 
-export const updateUsersForHome = async (streetAddress, users) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/home/update-users`, { streetAddress, users });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error updating users for home');
-  }
-};
+export const {
+  useFetchHomesForUserQuery,
+  useUpdateUsersForHomeMutation,
+  useFetchAllUsersQuery,
+  useFetchUsersForHomeQuery,
+} = api;
 
-export const fetchAllUsers = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/user/find-all`);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error fetching all users');
-  }
-};
-
-export const fetchUsersForHome = async (streetAddress) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/user/find-by-home`, null, {
-      params: { street_address: streetAddress }
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error fetching users for home');
-  }
-};
+export default api;

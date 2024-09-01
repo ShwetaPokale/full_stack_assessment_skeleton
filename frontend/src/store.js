@@ -1,12 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import homesReducer from '../src/features/homesSlice';
-import usersReducer from '../src/features/usersSlice';
+import { api } from '../src/api'; 
+import usersSlice from '../src/features/usersSlice';
+import homesSlice from '../src/features/homesSlice';
+
 
 const store = configureStore({
   reducer: {
-    homes: homesReducer,
-    users: usersReducer
-  }
+    [api.reducerPath]: api.reducer,
+    users: usersSlice, 
+    homes: homesSlice
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export default store;

@@ -1,31 +1,34 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import EditUserModal from '../components/EditUserModal';
-import { fetchUsersForHome } from '../api';
+import { useFetchUsersForHomeQuery } from '../api';
 
 const HomeCard = ({ home }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [usersForHome, setUsersForHome] = useState([]);
+  const { data: usersForHome = [], isLoading, isError } = useFetchUsersForHomeQuery(home.street_address, {
+    skip: !isModalOpen,
+  });
 
-  const handleEditClick = async () => {
-    try {
-      const data = await fetchUsersForHome(home.street_address);
-      setUsersForHome(data.users);
-      setIsModalOpen(true);
-    } catch (error) {
-      console.error('Error fetching users for home:', error);
-    }
+  const homes = useSelector((state) => state.homes.homes);
+  const homeFromRedux = homes.find(h => h.street_address === home.street_address);
+
+  const handleEditClick = () => {
+    setIsModalOpen(true);
   };
 
+  if (isLoading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (isError) return <p className="text-center text-red-500">Error fetching users for home.</p>;
+
   return (
-    <div className="p-4 border rounded shadow bg-white">
-      <h2 className="text-lg font-bold mb-2">{home.street_address}</h2>
+    <div className="border border-gray-300 rounded-lg shadow-md bg-white p-4 transition-shadow duration-300 hover:shadow-lg">
+      <h2 className="text-lg font-semibold mb-2">{homeFromRedux?.street_address || 'Address Not Available'}</h2>
       <div className="mb-4">
-        <p><strong>State:</strong> {home.state || 'N/A'}</p>
-        <p><strong>Zip Code:</strong> {home.zip || 'N/A'}</p>
-        <p><strong>Square Footage:</strong> {home.sqft || 'N/A'}</p>
-        <p><strong>Bedrooms:</strong> {home.beds || 'N/A'}</p>
-        <p><strong>Bathrooms:</strong> {home.baths || 'N/A'}</p>
-        <p><strong>List Price:</strong> ${home.list_price || 'N/A'}</p>
+        <p><strong>State:</strong> {homeFromRedux?.state || 'N/A'}</p>
+        <p><strong>Zip Code:</strong> {homeFromRedux?.zip || 'N/A'}</p>
+        <p><strong>Square Footage:</strong> {homeFromRedux?.sqft || 'N/A'}</p>
+        <p><strong>Bedrooms:</strong> {homeFromRedux?.beds || 'N/A'}</p>
+        <p><strong>Bathrooms:</strong> {homeFromRedux?.baths || 'N/A'}</p>
+        <p><strong>List Price:</strong> ${homeFromRedux?.list_price || 'N/A'}</p>
       </div>
       <button
         onClick={handleEditClick}
