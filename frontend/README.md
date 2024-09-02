@@ -13,7 +13,24 @@
 
 ## 2. Project Folder Structure
 
-project/ ├── frontend/ │ ├── src/ │ │ ├── components/ │ │ │ ├── HomeCard.jsx │ │ │ ├── EditUserModal.jsx │ │ │ └── HomesForUser.jsx │ │ ├── features/ │ │ │ ├── homesSlice.js │ │ │ └── usersSlice.js │ │ ├── api.js │ │ └── App.js │ ├── public/ │ ├── README.md │ └── package.json ├── backend/ │ ├── src/ │ │ ├── controllers/ │ │ ├── models/ │ │ ├── routes/ │ │ └── server.js │ ├── README.md │ └── package.json ├── README.md └── .gitignore
+frontend/
+├── public/
+│   └── index.html
+├── src/
+│   ├── api.js                  
+│   ├── App.js                   
+│   ├── components/
+│   │   ├── EditUserModal.jsx    
+│   │   ├── HomeCard.jsx         
+│   │   ├── HomesForUser.jsx     
+│   │   └── UserDropdown.jsx     
+│   ├── features/
+│   │   ├── homesSlice.js        
+│   │   └── usersSlice.js        
+│   ├── store.js                 
+│   └── index.js                 
+├── package.json                 
+└── README.md                    
 
 
 ## 3. Setup Instructions
