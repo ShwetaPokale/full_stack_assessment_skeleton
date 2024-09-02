@@ -150,6 +150,9 @@ docker-compose -f docker-compose.initial.yml up --build -d
     3. User and home details table
       ![Alt Text](images/user_home_details.png)
 
+    **TypeORM Integration**
+    - TypeORM is used in the backend, so tables will be created automatically. If you prefer to create tables using SQL queries, use the 99_final_db_dump.sql file and set synchronize to false in the backend/src/app.module.ts file.
+
 ## 2. React SPA
 
 - this is a simple SPA, the idea is to show case your state management and some frontend-dev skills
@@ -308,7 +311,13 @@ Key Features:
 
 ### solution
 
-> explain briefly your solution for this problem here
+The backend is developed using NestJS, which is a powerful Node.js framework. The primary goal is to create REST APIs that interact with a MySQL database to handle user and home-related data. The APIs are designed to be JSON-based and follow RESTful conventions. The backend is equipped with the following APIs:
+
+- **`/user/find-all`**: Returns all users from the database.
+- **`/home/find-by-user`**: Retrieves all homes related to a specified user. This endpoint supports pagination with a page size of 50.
+- **`/user/find-by-home`**: Fetches all users associated with a specified home address.
+- **`/home/update-users`**: Updates the set of users related to a specified home. This endpoint mutates the database to reflect the new user associations and is idempotent.
+- For more details on the backend approach and setup, see the [Backend README](../backend/README.md).
 
 ## Submission Guidelines
 

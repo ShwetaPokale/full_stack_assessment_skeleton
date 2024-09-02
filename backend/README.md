@@ -1,85 +1,69 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ npm install
+## Folder Structure
+```plaintext
+backend/
+├── package.json
+└── src/
+    ├── home/
+    │   ├── home.controller.ts
+    │   ├── home.entity.ts
+    │   └── home.service.ts
+    ├── user/
+    │   ├── user.controller.ts
+    │   ├── user.entity.ts
+    │   └── user.service.ts
+    ├── user_home/
+    │   └── user_home.entity.ts
+    ├── db.env
+    └── main.ts
 ```
 
-## Compile and run the project
+## Running the Backend
+1. **Clone the Repository**:  git clone https://github.com/ShwetaPokale/full_stack_assessment_skeleton.git
+2. Checkout branch: git checkout shweta-develop
+3. cd full_stack_assessment_skeleton/backend
+4. **Install Dependencies:** npm install
+5. Run the Docker Container for the Database:  docker-compose -f docker-compose.final.yml up --build -d
+6. **Configure Environment:** Edit the db.env file in the backend/ directory with your db credentials.
+7. **Start the Backend:** npm run start
+- The backend will run on port 3000. Ensure your frontend application uses a different port.
+8. **Database Initialization**
+- After running the backend, tables will be created automatically. Use the 99_final_db_dump.sql file to insert data into the tables using INSERT queries.
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
+## API Endpoints
 
-# production mode
-$ npm run start:prod
-```
+### `/user/find-all`
+- **Method**: `GET`
+- **Description**: Returns a list of all users.
+- **Response**: An array of user objects in JSON format with properties `username` and `email`.
+  ![Screenshot of /user/find-all](../docs/images/AllUsers.png)
 
-## Run tests
 
-```bash
-# unit tests
-$ npm run test
+### `/home/find-by-user`
+- **Method**: `POST`
+- **Description**: Finds homes associated with a specific user. Supports pagination.
+- **Query Parameters**:
+  - `username`: The username of the user whose homes are to be fetched.
+  - `page`: Page number for pagination (optional, default is 1).
+- **Response**: A message and a list of home objects.
+  ![Screenshot of /home/find-by-user](../docs/images/home_by_user.png)
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+### `/user/find-by-home`
+- **Method**: `POST`
+- **Description**: Retrieves users related to a specified home.
+- **Query Parameters**:
+  - `street_address`: The address of the home for which users are to be fetched.
+- **Response**: A message and a list of user objects.
+  ![Screenshot of /user/find-by-home](../docs/images/User_by_home.png)
 
-## Resources
 
-Check out a few resources that may come in handy when working with NestJS:
+### `/home/update-users`
+- **Method**: `POST`
+- **Description**: Updates the users associated with a specified home.
+- **Request Body**:
+  - `streetAddress`: The address of the home to update.
+  - `users`: An array of usernames to associate with the home.
+- **Response**: A success message and a list of updated user objects.
+  ![Screenshot of /home/update-users](../docs/images/Update_users.png)
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).

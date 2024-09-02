@@ -12,7 +12,7 @@
 4. **Responsive and Accessible UI:** Used Tailwind CSS for styling, ensuring the UI is both responsive and accessible.
 
 ## 2. Project Folder Structure
-
+```plaintext
 frontend/
 ├── public/
 │   └── index.html
@@ -31,14 +31,16 @@ frontend/
 │   └── index.js                 
 ├── package.json                 
 └── README.md                    
-
+```
 
 ## 3. Setup Instructions
 1. git clone https://github.com/ShwetaPokale/full_stack_assessment_skeleton.git
 2. Checkout branch: git checkout shweta-develop
-3. cd full_stack_assessment_skeleton
-4. npm start
+3. cd full_stack_assessment_skeleton/frontend
+4. npm install
 5. npm run build
+6. npm start
+
 
 ## 4. Usage
 - **View Homes for a User:** Select a user from the dropdown to see all homes they are associated with.
