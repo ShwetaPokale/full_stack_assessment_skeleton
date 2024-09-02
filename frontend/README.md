@@ -3,7 +3,7 @@
 
 2. **Component Structure:**
 
-- **HomesForUserPage:** The main page to select a user and display related homes.
+- **HomesForUser:** The main page to select a user and display related homes.
 - **HomeCard:** A card component displaying home details and an "Edit Users" button.
 - **EditUserModal:** A modal for editing users associated with a selected home.
 - **UserDropdown:**  A dropdown component for selecting a user.
