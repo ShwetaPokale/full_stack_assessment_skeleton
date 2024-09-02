@@ -248,7 +248,7 @@ Key Features:
 3. Data Fetching: RTK Query is utilized for data fetching to ensure efficient and cached API calls.
 4. Error Handling and Loading States: Proper handling of loading states and errors using loading spinners and error messages.
 5. Controlled Components: Ensured that checkboxes in the EditUserModal are controlled, reflecting the state correctly.
-For more details on the frontend approach and setup, see the [Frontend README](frontend/README.md).
+- For more details on the frontend approach and setup, see the [Frontend README](../frontend/README.md).
 ## 3. Backend API development on Node
 
 ### problem
