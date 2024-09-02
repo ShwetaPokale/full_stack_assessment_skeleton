@@ -239,8 +239,16 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
-
+1. View homes related to a particular user: A dropdown allows selecting a user, and the related homes populate below in a card format.
+2. Edit users associated with a home: Each home card has an "Edit Users" button, which opens a modal where users associated with the home can be edited.
+3. Ensure a responsive and functional UI: The design is minimal yet functional, supporting various screen sizes.
+Key Features: 
+1. Responsive Design: The HomesForUserPage component adapts to different screen sizes using Tailwind CSS grid classes.
+2. State Management: Redux Toolkit is used to manage application state effectively. This includes slices for users and homes.
+3. Data Fetching: RTK Query is utilized for data fetching to ensure efficient and cached API calls.
+4. Error Handling and Loading States: Proper handling of loading states and errors using loading spinners and error messages.
+5. Controlled Components: Ensured that checkboxes in the EditUserModal are controlled, reflecting the state correctly.
+For more details on the frontend approach and setup, see the [Frontend README](frontend/README.md).
 ## 3. Backend API development on Node
 
 ### problem

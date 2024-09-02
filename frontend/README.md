@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+## 1. Approach
+1. **API Integration:** All backend API endpoints are integrated using RTK Query. This allows for simplified and efficient data fetching, caching, and state management.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. **Component Structure:**
 
-## Available Scripts
+- **HomesForUserPage:** The main page to select a user and display related homes.
+- **HomeCard:** A card component displaying home details and an "Edit Users" button.
+- **EditUserModal:** A modal for editing users associated with a selected home.
+- **UserDropdown:**  A dropdown component for selecting a user.
 
-In the project directory, you can run:
+3. **State Management:** Used Redux Toolkit to create slices (homesSlice, usersSlice) for managing homes and users state.
+4. **Responsive and Accessible UI:** Used Tailwind CSS for styling, ensuring the UI is both responsive and accessible.
 
-### `npm start`
+## 2. Project Folder Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+project/ ├── frontend/ │ ├── src/ │ │ ├── components/ │ │ │ ├── HomeCard.jsx │ │ │ ├── EditUserModal.jsx │ │ │ └── HomesForUser.jsx │ │ ├── features/ │ │ │ ├── homesSlice.js │ │ │ └── usersSlice.js │ │ ├── api.js │ │ └── App.js │ ├── public/ │ ├── README.md │ └── package.json ├── backend/ │ ├── src/ │ │ ├── controllers/ │ │ ├── models/ │ │ ├── routes/ │ │ └── server.js │ ├── README.md │ └── package.json ├── README.md └── .gitignore
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 3. Setup Instructions
+1. git clone https://github.com/ShwetaPokale/full_stack_assessment_skeleton.git
+2. Checkout branch: git checkout shweta-develop
+3. cd full_stack_assessment_skeleton
+4. npm start
+5. npm run build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 4. Usage
+- **View Homes for a User:** Select a user from the dropdown to see all homes they are associated with.
+- **Edit Users for a Home:** Click the "Edit Users" button on a home card to open a modal, where you can add or remove users associated with that home.
 
-### `npm run build`
+## 5. Technologies Used
+- **React:** JavaScript library for building user interfaces.
+- **Redux Toolkit:** For state management.
+- **RTK Query:** For efficient data fetching and caching.
+- **Tailwind CSS:** For responsive UI design.
+- **React Toastify:** For displaying notifications.
+- **React Loading Skeleton:** For loading states.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 6. Future Improvements
+- Add pagination for large datasets.
+- Enhance the UI for better user experience.
+- Implement additional filters and sorting options for homes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 7. Demo
+Watch the video demonstration of the working frontend here: [Video Demo](https://drive.google.com/file/d/1oUamegEj6nH6YIYKFQO2v2jh5Zyv9h2g/view?usp=sharing)
