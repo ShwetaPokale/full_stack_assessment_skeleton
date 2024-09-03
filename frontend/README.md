@@ -34,6 +34,7 @@ frontend/
 ```
 
 ## 3. Setup Instructions
+- React version: 18.3.1
 1. git clone https://github.com/ShwetaPokale/full_stack_assessment_skeleton.git
 2. Checkout branch: git checkout shweta-develop
 3. cd full_stack_assessment_skeleton/frontend

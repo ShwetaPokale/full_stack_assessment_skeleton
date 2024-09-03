@@ -18,6 +18,7 @@ backend/
 ```
 
 ## Running the Backend
+- Versions: NodeJS - 22.6.0 NestJS - 10.4.1
 1. **Clone the Repository**:  git clone https://github.com/ShwetaPokale/full_stack_assessment_skeleton.git
 2. Checkout branch: git checkout shweta-develop
 3. cd full_stack_assessment_skeleton/backend
